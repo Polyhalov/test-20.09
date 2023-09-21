@@ -8,6 +8,12 @@ import Comments from "./Comments/Comments";
 export const App = () => {
   const [todos, setTodos] = useState([]);
   const [activeTodo, setActiveTodo] = useState(null);
+
+const activeTask = (id) => {
+    setActiveTodo(id)
+  }
+
+
   const addTask = (userInput) => {
     if (userInput) {
       const newItem = {
@@ -25,9 +31,7 @@ export const App = () => {
     setTodos([...todos.filter((todo) => todo.id !== id)])
   };
   
-  const activeTask = (id) => {
-    setActiveTodo(id)
-  }
+  
   return (
     <>
     <div className={css.reactItems}>
@@ -42,7 +46,7 @@ export const App = () => {
       })}
       </div>
       <div className={css.comments}>
-        <Comments></Comments>
+        <Comments activeTodo={activeTodo}></Comments>
       </div>
     </>
   );

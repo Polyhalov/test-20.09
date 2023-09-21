@@ -1,8 +1,8 @@
 import css from './Comments.module.css'
-function Comments() {
+function Comments({activeTodo}) {
     return (
         <div>
-            <h1 className={css.title}>Comments</h1>
+            <h1 className={css.title}>Comments:#{activeTodo}</h1>
             <form className={css.form}>
                 <input type="color" className={css.formControl} />
                     <textarea  className={css.formText} placeholder="Type comment here..." required />
