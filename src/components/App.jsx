@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ToDoForm from "./ToDoFrom/ToDoForm";
 import ToDo from "./ToDo/ToDo";
 import { nanoid } from "nanoid";
@@ -6,8 +6,32 @@ import css from './app.module.css'
 import CommentsForm from "./CommentsForm/CommentsForm";
 
 export const App = () => {
-  const [todos, setTodos] = useState([]);
-  const [activeTodo, setActiveTodo] = useState(null);
+  const [todos, setTodos] = useState(()=>{;
+    const todosFromLocalStorage = localStorage.getItem('todos');
+    if (todosFromLocalStorage !== null) {
+      const parsedTodos = JSON.parse(todosFromLocalStorage)
+      return parsedTodos;
+    }
+    return [];
+  });
+  const [activeTodo, setActiveTodo] = useState(() => {
+    const activeFromLocalStorage = localStorage.getItem('activeTodo');
+    if (activeFromLocalStorage !== null) {
+      const parsedActive = JSON.parse(activeFromLocalStorage);
+      return parsedActive;
+    }
+    return null;
+  });
+
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  useEffect(() => {
+    localStorage.setItem('activeTodo', JSON.stringify(activeTodo));
+  }, [activeTodo]);
+  
 
   const activeTask = (todo) => {
     setActiveTodo(todo);
