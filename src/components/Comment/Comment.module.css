@@ -1,0 +1,14 @@
+.comment{
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+    background-color: #fff;
+    align-items: center;
+}
+.card{
+    width: 50px;
+    height: 50px;
+}
+.text{
+    margin-left:15px;
+}

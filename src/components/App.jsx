@@ -3,7 +3,7 @@ import ToDoForm from "./ToDoFrom/ToDoForm";
 import ToDo from "./ToDo/ToDo";
 import { nanoid } from "nanoid";
 import css from './app.module.css'
-import Comments from "./Comments/Comments";
+import CommentsForm from "./CommentsForm/CommentsForm";
 
 export const App = () => {
   const [todos, setTodos] = useState([]);
@@ -31,9 +31,27 @@ export const App = () => {
     const newTodos = todos.filter((item) => item.id !== id);
     setTodos([...newTodos]);
     if (newTodos.length){
-      setActiveTodo(newTodos[newTodos.length-1])
+      activeTask(newTodos[newTodos.length-1])
     }
       else{setActiveTodo(null)}
+  }
+
+  const addComment = (color,text) => {
+    activeTodo.comments.push({
+      id: `${activeTodo.id}-${activeTodo.comments.length}`,
+      color,
+      text
+    })
+    for (let i = 0; i < todos.length; i++) {
+            if (todos[i].id === activeTodo.id) {
+                todos[i] = {
+                    ...activeTodo
+                };
+                break;
+            }
+    }
+    setTodos([...todos]);
+    setActiveTodo({ ...activeTodo });
   }
   
  
@@ -52,7 +70,7 @@ export const App = () => {
       })}
       </div>
       <div className={css.comments}>
-        <Comments activeTodo={activeTodo}></Comments>
+        <CommentsForm activeTodo={activeTodo} addComment={addComment}></CommentsForm>
       </div>
     </>
   );
