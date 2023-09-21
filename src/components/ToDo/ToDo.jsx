@@ -1,6 +1,5 @@
 import css from './ToDo.module.css'
 function ToDo({todo, removeTask, activeTodo, activeTask}) {
-     console.log(todo)
     return (
         <div>
             <ul className={css.toDoList}>
