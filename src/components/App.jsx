@@ -9,10 +9,10 @@ export const App = () => {
   const [todos, setTodos] = useState([]);
   const [activeTodo, setActiveTodo] = useState(null);
 
-  const activeTask = (id) => {
-    setActiveTodo(id);
+  const activeTask = (todo) => {
+    setActiveTodo(todo);
   }
-
+  console.log(activeTodo);
   const addTask = (userInput) => {
     if (userInput) {
       const newItem = {
@@ -22,7 +22,7 @@ export const App = () => {
       }
       setTodos([...todos, newItem])
       if (!todos.length) {
-      setActiveTodo(newItem.id)
+      setActiveTodo(newItem)
     }
     }
     
@@ -31,10 +31,10 @@ export const App = () => {
     const newTodos = todos.filter((item) => item.id !== id);
     setTodos([...newTodos]);
     if (newTodos.length){
-      setActiveTodo(newTodos[newTodos.length-1].id)
+      setActiveTodo(newTodos[newTodos.length-1])
     }
       else{setActiveTodo(null)}
-    }
+  }
   
  
   

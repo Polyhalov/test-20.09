@@ -18,6 +18,7 @@ function ToDoForm({addTask}) {
                 type='text'
                 onChange={handleChange}
                 placeholder="Type name here..."
+                required
             />
             <button className={css.btn}>Add New</button>
         </form>
