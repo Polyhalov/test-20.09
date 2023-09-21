@@ -1,5 +1,7 @@
 import css from './CommentsForm.module.css'
 import Comment from 'components/Comment/Comment';
+import PropTypes from 'prop-types';
+
 function CommentsForm({activeTodo, addComment}) {
   const  handleSubmitForm = (e) => {
         e.preventDefault();
@@ -18,4 +20,12 @@ function CommentsForm({activeTodo, addComment}) {
         </div>
     )
 }
+
+
+CommentsForm.propTypes = {
+    activeTodo: PropTypes.object,
+    addComment: PropTypes.func
+}
+
+
 export default CommentsForm;

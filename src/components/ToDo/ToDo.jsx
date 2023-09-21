@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import css from './ToDo.module.css'
+
 function ToDo({ todo, removeTask, activeTodo, activeTask }) {
 
     const handleDelete = (e,id) => {
@@ -20,4 +22,11 @@ function ToDo({ todo, removeTask, activeTodo, activeTask }) {
     )
 }
 
+ToDo.propTypes = {
+    todo: PropTypes.array,
+    activeTodo: PropTypes.object,
+    activeTask: PropTypes.func,
+    removeTask: PropTypes.func
+}
 export default ToDo;
+
